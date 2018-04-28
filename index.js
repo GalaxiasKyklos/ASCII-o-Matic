@@ -25,7 +25,6 @@ exports.handler = async (event) => {
     Bucket: 'upload.asciify.galaxiaskyklos.com',
     Key: fileName,
     Body: buffer,
-    Region: 'us-east-2'
   }
   const s3 = new S3()
   try {
