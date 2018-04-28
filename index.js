@@ -31,6 +31,8 @@ exports.handler = async (event) => {
   try {
     await s3.putObject(params).promise()
     const result = await asciifyImg(`https://s3-us-east-2.amazonaws.com/${fileName}`)
+    delete params['Body']
+    delete params['ACL']
     await s3.deleteObject(params).promise()
     return result
   } catch (e) {
