@@ -11,7 +11,7 @@ const options = {
 
 const asciifyImg = async (image) => {
   try {
-    return await asciify('./logo.jpg', options)
+    return await asciify(image, options)
   } catch (e) {
     return e
   }
@@ -20,7 +20,7 @@ const asciifyImg = async (image) => {
 exports.handler = async (event) => {
   const { image, fileName } = event
   const base64Data = image.replace(/^data:image\/png;base64,/, '')
-  const buffer = new Buffer(base64Data, 'base64')
+  const buffer = new Buffer(base64Data, 'base64').toString()
   const params = {
     Bucket: 'upload.asciify.galaxiaskyklos.com',
     Key: fileName,
