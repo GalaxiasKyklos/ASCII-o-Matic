@@ -1,10 +1,12 @@
 const asciify = require('asciify-image')
 const fs = require('fs')
-const { S3 } = require('aws-sdk')
- 
+const {
+  S3
+} = require('aws-sdk')
+
 const options = {
-  fit:    'box',
-  width:  100,
+  fit: 'box',
+  width: 100,
   height: 40,
   color: false,
 }
@@ -15,11 +17,17 @@ const asciifyImg = async (image) => {
   } catch (e) {
     return e
   }
-} 
+}
 
 exports.handler = async (event) => {
-  const { image, fileName } = event
-  const base64Data = image.replace(/^data:image\/png;base64,/, '')
+  const {
+    image,
+    fileName
+  } = event
+  const base64Data = image
+    .replace(/^data:image\/png;base64,/, '')
+    .replace(/^data:image\/jpg;base64,/, '')
+    .replace(/^data:image\/jpg;base64,/, '')
   const buffer = new Buffer(base64Data, 'base64').toString()
   const params = {
     Bucket: 'upload.asciify.galaxiaskyklos.com',
