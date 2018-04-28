@@ -25,6 +25,7 @@ exports.handler = async (event) => {
     Bucket: 'upload.asciify.galaxiaskyklos.com',
     Key: fileName,
     Body: buffer,
+    ACL: 'public-read',
   }
   const s3 = new S3()
   try {
