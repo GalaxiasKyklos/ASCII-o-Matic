@@ -25,10 +25,11 @@ exports.handler = async (event) => {
     fileName
   } = event
   const base64Data = image
-    .replace(/^data:image\/png;base64,/, '')
-    .replace(/^data:image\/jpg;base64,/, '')
-    .replace(/^data:image\/jpeg;base64,/, '')
+    .replace('data:image/png;base64,', '')
+    .replace('data:image/jpg;base64,', '')
+    .replace('data:image/jpeg;base64,', '')
   const buffer = new Buffer(base64Data, 'base64').toString()
+  return base64Data
   const params = {
     Bucket: 'upload.asciify.galaxiaskyklos.com',
     Key: fileName.replace(' ', ''),
