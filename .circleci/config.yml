@@ -1,0 +1,20 @@
+version: 2
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      - image: armz/node-8.7.0-awscli
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+      - run: yarn install
+      - run: yarn build
+      - run: zip index.zip node_modules/ index.js 
+      - run: aws lambda update-function-code --function-name asciify-o-matic --zip-file fileb://index.zip
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
