@@ -10,7 +10,6 @@ jobs:
     steps:
       - checkout
       - run: yarn install
-      - run: yarn build
       - run: zip index.zip node_modules/ index.js 
       - run: aws lambda update-function-code --function-name asciify-o-matic --zip-file fileb://index.zip
 
