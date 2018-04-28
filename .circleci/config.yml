@@ -11,8 +11,8 @@ jobs:
       - checkout
       - run: yarn install
       - run: apt-get install -y zip
-      - run: zip index.zip node_modules/ index.js 
-      - run: aws lambda update-function-code --function-name asciify-o-matic --zip-file fileb://index.zip
+      - run: zip -r index.zip node_modules/ index.js 
+      - run: aws lambda update-function-code --function-name asciify-o-matic --zip-file fileb://index.zip --region us-east-2
 
       - save_cache:
           paths:
