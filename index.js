@@ -11,6 +11,7 @@ const asciifyImg = async (image, width = 100, height = 100) => {
       fit: 'box',
       height,
       width,
+      reverse: true,
     }
     return await asciify(image, options)
   } catch (e) {
