@@ -51,13 +51,11 @@ const getBuffer = (image) => {
 
 exports.handler = async (event) => {
   const {
-    image,
     fileName,
-    options: {
-      width,
-      height,
-    },
+    height,
+    image,
     url,
+    width,
   } = event
   try {
     let imgUrl
