@@ -74,6 +74,6 @@ exports.handler = async (event) => {
     }
     return result
   } catch (e) {
-    return e
+    return 'Pa que quieres eso, jaja, saludos'
   }
 }
